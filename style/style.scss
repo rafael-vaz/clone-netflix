@@ -6,38 +6,34 @@
     box-sizing: border-box;
 }
 
-body{
-    min-height: 100vh;
+body{ 
+    height: auto;
     width: 100%;
+    overflow-x: hidden;
     background-color: $bgColor;
 }
 
-/*BARRA DE NAVEGAÇÃO*/
+/* barra de navegacao */
 
-.navBar{
-    padding: 10px 10px;    
+.navbar{
+    padding: 10px;    
     width: 100%;
     height: 50px;
     background-color: $bgColor;
-
     @include flexbox(row, space-between);
     
-    .navLinks{
-
+    .nav-links{
         display: flex;
         align-items: center;
-
-        .links {
-        
-            display: flex;
-            
+        .links {        
+            display: flex;  
+            gap:20px;          
             a{
             transition: ease;
             text-decoration: none;
             font-size: $navLinksSize;
             font-family: $fontRoboto;
-            color: $fontColor;
-            margin-left: 20px;
+            color: $fontColor;          
             &:hover{
             color:white;
             }
@@ -47,71 +43,47 @@ body{
     .logo{
         width: 115px;
         height: 60px;
+        margin: 0 10px;
+       
         &:hover{
             cursor: pointer;
         }
     }
 
-    .logo2{
+    .logo-mobile{
         width: 20px;
         height: 25px;
-        &:hover{
-            cursor:pointer;
-        }
+       cursor: pointer;
     }
-    
     }
-    
-    
-   
 
-    .navIcons { 
-        
+    .nav-icons {      
         display: flex;
         align-items: center;
         color: $fontColor;
         font-family: $fontRoboto;
         font-size:$navLinksSize;
+        gap: 20px;
 
         img{
         width: $navIconsSize;
         height: $navIconsSize;
-        margin-right: 20px;
-        &:hover{
-            cursor: pointer;
-        }
+        cursor: pointer;      
     }
-
-    p{
-        margin-right: 20px;
-    }
-
-    .menu-hamburger button:focus + ul{
-        opacity: 1;  
-      }
-
-      .menu{
-
-        &:hover{
-            cursor: pointer;}
-    }
-
 
     .menu-list{
         @include flexbox(column, space-between);
+        display: none;
         position: absolute;
         right: 0px;
         top: 48px;
         background-color: $bgColor;
         padding: 10px 30px;
         box-shadow: 1px 13px 17px -12px #000000;
-        opacity: 0;
-
         li{
          list-style: none;
          line-height: 40px;
         a{
-
         text-decoration: none;
         font-size: $navLinksSize;
         font-family: $fontPoppins;
@@ -119,55 +91,60 @@ body{
         &:hover{
             color: white;
         }
-        }
-        
-        }
-        
+        }  
+        }  
     }
 
     .menu-button{
         border: 0;
         outline: none;
-        background-color: transparent;
-        &:focus + .menu-list {
-        opacity: 1;
-        }
+        background-color: transparent;       
     }
-   
 
-}   
-   
+    .show{
+        display: flex !important;
+    }
+}     
 }
 
-/*SESSÃO DO BANNER*/
+/* banner */
 
 .content{
 
 .banner{
-    height: 580px;
-    width: 70%;
+    height: auto;
+    width: 100%;
     background-image: linear-gradient(to right, #141414 8%, transparent 20%), url(../img/banner.jpg);
-    background-position: center;
+    background-position-x: 350px;
+    background-position-y:center;
     background-repeat: no-repeat;
     background-size: cover;
-    float: right;
+    grid-template-columns: 1fr 2fr;
+    display: grid;
+    padding: 20px 40px;
+    min-height: calc(100vh - 40px);
 }
 
-.banner2{
-    height: 550px;
-    width: 100%;
-    background-image: linear-gradient(to top, #141414 8%, transparent 20%), url(../img/banner.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
+@media (max-width:1080px){
+    .banner{
+        background-image: linear-gradient(to top, #141414 10%, transparent 100%), url(../img/banner.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+    .sinopse{
+        max-width: 80%;
+    }
 }
 
 .infomedia{
-
-    position: absolute;
-    transform: translate(-300px, 40px);
-    @include flexbox(column, space-between);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
 
     .title{
         font-family: $fontPoppins;
@@ -187,14 +164,12 @@ body{
     }
 
     .extra{
-
         @include flexbox(row, space-between);
+        gap: 10px;
         p{
             font-family: $fontRoboto;
             font-size: 15px;
-            color: $fontColor; 
-            margin-left: 10px;
-            margin-right: 10px;
+            color: $fontColor;      
         }
 
         img{
@@ -206,26 +181,24 @@ body{
 
             img{
                 width: 20px;
-                height: 20px;
-                margin-right: 5px;
+                height: 20px;              
             }
         }
     }
 
     .sinopse{
-        width: 40%;
         font-size: 15px;
         font-family: $fontRoboto;
         color: $fontColor;
-        line-height: 25px;
+        line-height: 1.5;
+        margin: 10px 0;
     }
 
     .buttons {
         
         display: flex;
-        margin-top: 20px;
+        gap: 20px;
         button{
-           
             display:flex;
             align-items: center;
             padding: 10px 20px;
@@ -235,19 +208,17 @@ body{
             background-color: #494949;
             border: none;
             outline: none;
-            border-radius: 5px;
-            margin-right: 20px;
+            border-radius: 5px;           
             transition: 0.2s ease;
+            cursor: pointer;
             &:hover{
                 background-color: #353535;
             }
-        
             img{
                 width: 22px;
                 height: 22px;
                 margin-right: 10px;
             }
-
             
         }
     }
@@ -255,19 +226,18 @@ body{
 
 }
 
-/*CAROUSEL*/
+/* carousel */
 
 .carousel{
- position: absolute;   
+height: auto;
  width: 100%;
- bottom: -320px;
-
+ padding: 10px 20px;
  h3{
     font-family: $fontRoboto;
     color: white;
     font-size: 22px;
     margin-bottom: 20px;
-    margin-left: 10px;
+    margin-left: 20px;
  }
     
  .label{
@@ -279,6 +249,138 @@ body{
  }
     
 }
+
+/* footer */
+
+footer{
+    height: auto;
+    width: 100%;
+    background-color:$bgColor;
+    padding: 30px;
+
+    .social-media{
+        @include flexbox(row, flex-start);
+        margin: 30px 0;
+        gap: 30px;
+    }
+
+    .infos {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        align-items: center;   
+        margin: 30px 0;    
+        a{
+            font-size: $navLinksSize;
+            font-family: $fontRoboto;
+            color: #808080;     
+            text-decoration: none;   
+            display: block;
+            &:hover{
+                color:#fff;
+            }
+        } 
+    }
+
+    .copyright{
+        font-size: 13px;
+        font-family: $fontRoboto;
+        color: #808080;   
+
+    }
+
+    @media (max-width: 1000px){
+        .infos{
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 750px){
+        .infos{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 500px){
+        .infos a{
+           font-size: 12px;
+        }
+    }
+
+}
+
+@media screen and (max-width:650px){
+
+    .links a{
+        display: none;
+    }
+    
+    .menu-button{
+        display: block;
+    }
+    
+    .logo-mobile{ 
+        
+        display: none;
+    }
+    }
+    
+    @media screen and(min-width:651px){
+    
+        .menu-button{
+    
+            display:none;
+        }
+    
+        .logo-mobile{ 
+        
+            display: none;
+        
+        }
+    }
+    
+    @media screen and (max-width: 460px){
+    
+        .logo{
+            display: none;
+        }
+    
+        .logo-mobile{
+            display: block;
+            margin-right: 20px;
+        }
+    }
+    
+    @media screen and (max-width: 1080px){
+    
+        .title-media{
+            display: none;
+        }
+    
+       .sinopse{
+           width: 100%;
+       }
+    }
+    
+    @media screen and (min-width: 1080px){
+    
+        .responsive-title{
+            display: none;
+        }
+        
+    }
+    
+    @media screen and (max-width: 500px){
+    
+        .sinopse{
+            
+            display: none;
+        }
+        
+    }
+    
+    
+
 
 
 
