@@ -17,4 +17,4 @@ Projeto de clone relacionado ao website da Netflix, criado com HTML, Javascript 
 
 ## Link do website 🌎
 
-https://rafael-vaz.github.io/netflix/
+https://rafael-vaz.github.io/clone-netflix/
